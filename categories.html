@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Interests</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: #f8f5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn { from { opacity:0; transform: translateY(15px);} to {opacity:1; transform:translateY(0);} }
+
+        h2 {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #6b4bff;
+        }
+        p { text-align: center; margin-bottom: 25px; color: #555; }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .category {
+            padding: 18px 14px;
+            text-align: center;
+            border-radius: 14px;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: 500;
+            background: #fafbff;
+        }
+
+        .category:hover {
+            border-color: #6b4bff;
+            background: #ede8ff;
+        }
+        .category.selected {
+            border-color: #6b4bff;
+            background: #cfc4ff;
+            color: #fff;
+        }
+
+        .btn-area {
+            margin-top: 30px;
+            text-align: center;
+        }
+        button {
+            padding: 14px 32px;
+            border: none;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #6b4bff;
+            color: #fff;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        button:hover { background: #5433ff; }
+
+        @media(max-width: 600px) {
+            h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your Interests</h2>
+        <p>Choose topics you like to personalize your feed. You can change them later.</p>
+
+        <div class="categories" id="categoryList">
+            <div class="category">Technology</div>
+            <div class="category">Programming</div>
+            <div class="category">AI & ML</div>
+            <div class="category">Fashion</div>
+            <div class="category">Travel</div>
+            <div class="category">Food</div>
+            <div class="category">Motivation</div>
+            <div class="category">Books</div>
+            <div class="category">Lifestyle</div>
+            <div class="category">Education</div>
+            <div class="category">Sports</div>
+            <div class="category">Photography</div>
+            <div class="category">Art & Design</div>
+            <div class="category">Music</div>
+            <div class="category">Finance</div>
+            <div class="category">Health & Fitness</div>
+        </div>
+
+        <div class="btn-area">
+            <button id="continueBtn">Continue</button>
+        </div>
+    </div>
+
+<script>
+    const items = document.querySelectorAll('.category');
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('selected');
+        });
+    });
+
+    document.getElementById('continueBtn').addEventListener('click', () => {
+        const selected = Array.from(document.querySelectorAll('.selected')).map(el => el.innerText);
+        alert("Selected Categories: " + selected.join(', '));
+        // Redirect to homepage
+        // window.location.href = 'homepage.html'
+    });
+</script>
+
+</body>
+</html>
